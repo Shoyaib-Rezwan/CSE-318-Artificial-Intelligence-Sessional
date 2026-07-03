@@ -5,16 +5,11 @@ struct Board
 {
     vector<vector<int>> grid;
     double f, g, h;
-    shared_ptr<Board> parent;
-    Board(const vector<vector<int>> &grid, double g, double h, double f, shared_ptr<Board> parent = nullptr) : grid(grid), f(f), g(g), h(h), parent(parent)
+    Board *parent;
+    Board(const vector<vector<int>> &grid, double g, double h, double f, Board *parent = nullptr) : grid(grid), f(f), g(g), h(h), parent(parent)
     {
     }
 };
-
-bool operator<(pair<int, int> &a, pair<int, int> &b)
-{
-    return a.first < b.first || a.first == b.first && a.second < b.second;
-}
 
 class Heuristics
 {
@@ -40,24 +35,20 @@ public:
     static double manhattanDistance(const vector<vector<int>> &grid)
     {
         int k = grid.size();
-        double dist = 0;
+        double cnt = 0.0;
         for (int i = 0; i < k; i++)
         {
             for (int j = 0; j < k; j++)
             {
-                int val = grid[i][j];
-                if (val > 0)
-                {
-                    int targetRow = (val - 1) / k;
-                    int targetCol = (val - 1) % k;
-                    dist += abs(i - targetRow) + abs(j - targetCol);
-                }
+                if (grid[i][j] == 0)
+                    continue;
+                cnt += abs(i - (grid[i][j] - 1) / k) + abs(j - (grid[i][j] - 1) % k);
             }
         }
-        return dist;
+        return cnt;
     }
 
-    static double euclideanDistance(vector<vector<int>> &grid)
+    static double euclideanDistance(const vector<vector<int>> &grid)
     {
         int k = grid.size();
         double cnt = 0.0;
@@ -74,7 +65,7 @@ public:
         return cnt;
     }
 
-    static double linearConflict(vector<vector<int>> &grid)
+    static double linearConflict(const vector<vector<int>> &grid)
     {
         int k = grid.size();
         int conflict = 0;
@@ -171,7 +162,7 @@ bool isSolvable(const vector<vector<int>> &grid)
 
 struct Comparator
 {
-    bool operator()(const shared_ptr<Board> &a, const shared_ptr<Board> &b)
+    bool operator()(const Board *a, const Board *b)
     {
         return a->f > b->f;
     }
@@ -198,12 +189,12 @@ bool isValidMove(int row, int col, int k)
     return row >= 0 && row < k && col >= 0 && col < k;
 }
 
-void printPath(shared_ptr<Board> src, shared_ptr<Board> dst)
+void printPath(Board *src, Board *dst)
 {
     int k = src->grid.size();
     int cnt = 0;
-    stack<shared_ptr<Board>> path;
-    shared_ptr<Board> curr = dst;
+    stack<Board *> path;
+    Board *curr = dst;
     while (curr != src)
     {
         path.push(curr);
@@ -215,17 +206,18 @@ void printPath(shared_ptr<Board> src, shared_ptr<Board> dst)
 
     while (!path.empty())
     {
-        vector<vector<int>> grid = path.top()->grid;
+        Board *board = path.top();
         path.pop();
         for (int i = 0; i < k; i++)
         {
             for (int j = 0; j < k; j++)
             {
-                cout << grid[i][j] << ' ';
+                cout << board->grid[i][j] << ' ';
             }
             cout << '\n';
         }
         cout << "\n";
+        free(board);
     }
 }
 
@@ -244,7 +236,7 @@ string encodeGrid(vector<vector<int>> &grid)
     return s;
 }
 
-void solveNPuzzle(vector<vector<int>> &grid)
+void solveNPuzzle(vector<vector<int>> &grid, double (*heuristic)(const vector<vector<int>> &))
 {
     if (!isSolvable(grid))
     {
@@ -252,25 +244,37 @@ void solveNPuzzle(vector<vector<int>> &grid)
         return;
     }
     int k = grid.size();
-    priority_queue<shared_ptr<Board>, vector<shared_ptr<Board>>, Comparator> openList;
+    priority_queue<Board *, vector<Board *>, Comparator> openList;
     unordered_set<string> closedList;
-    double h = Heuristics::linearConflict(grid);
-    shared_ptr<Board> startBoard = make_shared<Board>(grid, 0.0, h, 0 + h);
+    double h = heuristic(grid);
+    Board *startBoard = new Board(grid, 0.0, h, 0 + h);
     openList.push(startBoard);
     vector<int> di = {0, 0, 1, -1}, dj = {1, -1, 0, 0};
     while (!openList.empty())
     {
-        shared_ptr<Board> board = openList.top();
+        Board *board = openList.top();
         openList.pop();
         string encodedGrid = encodeGrid(board->grid);
         if (closedList.count(encodedGrid))
+        {
+            free(board);
             continue;
+        }
         closedList.insert(encodedGrid);
+
         if (isGoal(board->grid))
         {
             printPath(startBoard, board);
+
+            while (!openList.empty())
+            {
+                Board *board = openList.top();
+                openList.pop();
+                free(board);
+            }
             return;
         }
+
         pair<int, int> p = getBlankPosition(board->grid);
         int i = p.first, j = p.second;
         for (int m = 0; m < 4; m++)
@@ -282,11 +286,43 @@ void solveNPuzzle(vector<vector<int>> &grid)
             swap(newGrid[i][j], newGrid[newI][newJ]);
             if (closedList.count(encodeGrid(newGrid)))
                 continue;
-            h = Heuristics::linearConflict(newGrid);
-            shared_ptr<Board> newBoard = make_shared<Board>(newGrid, board->g + 1, h, board->g + 1 + h, board);
+            h = heuristic(newGrid);
+            Board *newBoard = new Board(newGrid, board->g + 1, h, board->g + 1 + h, board);
             openList.push(newBoard);
         }
     }
+}
+
+auto chooseHeuristic()
+{
+    cout << "\nType the corresponding number to choose a heuristic function:\n\n";
+    cout << "1. Hamming Distance\n";
+    cout << "2. Manhattan Distance\n";
+    cout << "3. Euclidean Distance\n";
+    cout << "4. Linear Conflict\n";
+    cout << "\nEnter your choice: ";
+    int choice = -1;
+    cin >> choice;
+    double (*funcPtr)(const vector<vector<int>> &) = nullptr;
+    switch (choice)
+    {
+    case 1:
+        funcPtr = Heuristics::hammingDistance;
+        break;
+    case 2:
+        funcPtr = Heuristics::manhattanDistance;
+        break;
+    case 3:
+        funcPtr = Heuristics::euclideanDistance;
+        break;
+    case 4:
+        funcPtr = Heuristics::linearConflict;
+        break;
+
+    default:
+        break;
+    }
+    return funcPtr;
 }
 
 int main()
@@ -302,5 +338,12 @@ int main()
         }
     }
 
-    solveNPuzzle(grid);
+    double (*heuristic)(const vector<vector<int>> &) = chooseHeuristic();
+    if (heuristic == nullptr)
+    {
+        cout << "Invalid heuristic function!!!\n";
+        return -1;
+    }
+    solveNPuzzle(grid, heuristic);
+    return 0;
 }
