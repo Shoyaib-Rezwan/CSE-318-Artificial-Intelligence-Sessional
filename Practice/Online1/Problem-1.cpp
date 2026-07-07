@@ -1,7 +1,15 @@
+/*
+    modify the assignment such that it's goal state is
+    0 1 2
+    3 4 5
+    6 7 8
+    same for all k*k puzzles with k=3,4,5,....
+
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
-const unsigned long long int THRESHOLD = 4000000;
+vector<pair<int, int>> goalPos;
 
 struct Board
 {
@@ -17,6 +25,17 @@ class Heuristics
 {
 
 public:
+    static void setGoalPos(int k)
+    {
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < k; j++)
+            {
+                goalPos.push_back(make_pair(i, j));
+            }
+        }
+    }
+
     static double hammingDistance(const vector<vector<int>> &grid)
     {
         int k = grid.size();
@@ -44,7 +63,7 @@ public:
             {
                 if (grid[i][j] == 0)
                     continue;
-                cnt += abs(i - (grid[i][j] - 1) / k) + abs(j - (grid[i][j] - 1) % k);
+                cnt += abs(i - goalPos[grid[i][j]].first) + abs(j - goalPos[grid[i][j]].second);
             }
         }
         return cnt;
@@ -77,12 +96,12 @@ public:
             for (int j = 0; j < k - 1; j++)
             {
                 int left = grid[i][j];
-                if ((left - 1) / k != i || left == 0)
+                if (goalPos[left].first != i || left == 0)
                     continue;
                 for (int l = j + 1; l < k; l++)
                 {
                     int right = grid[i][l];
-                    if ((right - 1) / k != i || right == 0)
+                    if (goalPos[right].first != i || right == 0)
                         continue;
                     if (left > right)
                         conflict++;
@@ -95,12 +114,12 @@ public:
             for (int j = 0; j < k - 1; j++)
             {
                 int top = grid[j][i];
-                if ((top - 1) % k != i || top == 0)
+                if (goalPos[top].second != i || top == 0)
                     continue;
                 for (int l = j + 1; l < k; l++)
                 {
                     int bottom = grid[l][i];
-                    if ((bottom - 1) % k != i || bottom == 0)
+                    if (goalPos[bottom].second != i || bottom == 0)
                         continue;
                     if (top > bottom)
                         conflict++;
@@ -113,17 +132,8 @@ public:
     static double custom(const vector<vector<int>> &grid)
     {
         int k = grid.size();
-        // h(n)= manhattan+2*(corner_conflict+ linear_conflict)
+        // h(n)= linear_conflict+ 2*corner_conflict
         double cornerConflict = 0.0;
-
-        // // top-left
-        // cornerConflict += (grid[0][0] != 1 && grid[0][1] == 2 && grid[1][0] == k + 1) ? 1 : 0;
-
-        // // top right
-        // cornerConflict += (grid[0][k - 1] != k && grid[0][k - 2] == k - 1 && grid[1][k - 1] == 2 * k) ? 1 : 0;
-
-        // // bottom-left
-        // cornerConflict += (grid[k - 1][0] != k * (k - 1) + 1 && grid[k - 1][1] == k * (k - 1) + 2 && grid[k - 2][0] == k * (k - 2) + 1) ? 1 : 0;
 
         // top-left
         cornerConflict += (grid[0][0] == 1 && grid[0][1] == k + 1 && grid[1][0] == 2) ? 1 : 0;
@@ -182,8 +192,8 @@ bool isSolvable(const vector<vector<int>> &grid)
 
     if (k % 2 && inversions % 2 == 0)
         return true;
-    int blankRowBottom = k - getBlankPosition(grid).first;
-    if (k % 2 == 0 && (blankRowBottom % 2 && inversions % 2 == 0 || blankRowBottom % 2 == 0 && inversions % 2))
+    int blankRowTop = getBlankPosition(grid).first + 1;
+    if (k % 2 == 0 && (blankRowTop % 2 && inversions % 2 == 0 || blankRowTop % 2 == 0 && inversions % 2))
         return true;
     return false;
 }
@@ -203,12 +213,11 @@ bool isGoal(const vector<vector<int>> &grid)
     {
         for (int j = 0; j < k; j++)
         {
-            if (grid[i][j] > 0 && grid[i][j] != k * i + j + 1)
+            if (i != goalPos[grid[i][j]].first || j != goalPos[grid[i][j]].second)
                 return false;
         }
     }
-    if (grid[k - 1][k - 1] != 0)
-        return false;
+
     return true;
 }
 
@@ -217,7 +226,7 @@ bool isValidMove(int row, int col, int k)
     return row >= 0 && row < k && col >= 0 && col < k;
 }
 
-int printPath(Board *src, Board *dst)
+void printPath(Board *src, Board *dst)
 {
     int k = src->grid.size();
     int cnt = 0;
@@ -230,8 +239,9 @@ int printPath(Board *src, Board *dst)
         cnt++;
     }
     path.push(src);
-    cout << "Minimum number of moves = " << cnt << "\n\n";
+    cout << "Minimum number of moves " << cnt << "\n\n";
 
+    cnt = 0;
     while (!path.empty())
     {
         Board *board = path.top();
@@ -245,9 +255,8 @@ int printPath(Board *src, Board *dst)
             cout << '\n';
         }
         cout << "\n";
-        delete board;
+        free(board);
     }
-    return cnt;
 }
 
 string encodeGrid(vector<vector<int>> &grid)
@@ -264,17 +273,8 @@ string encodeGrid(vector<vector<int>> &grid)
     }
     return s;
 }
-void emptyOpenList(priority_queue<Board *, vector<Board *>, Comparator> &openList)
-{
-    while (!openList.empty())
-    {
-        Board *temp = openList.top();
-        openList.pop();
-        delete temp;
-    }
-}
 
-void solveNPuzzle(vector<vector<int>> &grid, double (*heuristic)(const vector<vector<int>> &), unsigned long long int &explored, const double &weight, int &cost)
+void solveNPuzzle(vector<vector<int>> &grid, double (*heuristic)(const vector<vector<int>> &), unsigned long long int &explored, const double &weight)
 {
     explored = 0;
     if (!isSolvable(grid))
@@ -291,30 +291,27 @@ void solveNPuzzle(vector<vector<int>> &grid, double (*heuristic)(const vector<ve
     vector<int> di = {0, 0, 1, -1}, dj = {1, -1, 0, 0};
     while (!openList.empty())
     {
-
-        // check of code exceeds the threshold
-        if (explored > THRESHOLD)
-        {
-            cout << "Resource limit exceeded. Terminating solving puzzle......\n";
-            emptyOpenList(openList);
-            return;
-        }
-
         explored++;
         Board *board = openList.top();
         openList.pop();
         string encodedGrid = encodeGrid(board->grid);
         if (closedList.count(encodedGrid))
         {
-            delete board;
+            free(board);
             continue;
         }
         closedList.insert(encodedGrid);
 
         if (isGoal(board->grid))
         {
-            cost = printPath(startBoard, board);
-            emptyOpenList(openList);
+            printPath(startBoard, board);
+
+            while (!openList.empty())
+            {
+                Board *board = openList.top();
+                openList.pop();
+                free(board);
+            }
             return;
         }
 
@@ -332,6 +329,7 @@ void solveNPuzzle(vector<vector<int>> &grid, double (*heuristic)(const vector<ve
             h = heuristic(newGrid);
             Board *newBoard = new Board(newGrid, board->g + 1, weight * h, board->g + 1 + weight * h, board);
             openList.push(newBoard);
+            
         }
     }
 }
@@ -374,97 +372,33 @@ auto chooseHeuristic()
 
 int main()
 {
-    int fileInput = -1;
-    cout << "\nChoose I/O method:\n";
-    cout << "\n1. Console";
-    cout << "\n2. File\n";
-    cout << "\nEnter your choice: ";
-    cin >> fileInput;
-    cin.ignore();
-
-    // console IO
-    if (fileInput == 1)
+    int k;
+    cin >> k;
+    vector<vector<int>> grid(k, vector<int>(k));
+    for (int i = 0; i < k; i++)
     {
-        int k;
-        cin >> k;
-        vector<vector<int>> grid(k, vector<int>(k));
-        for (int i = 0; i < k; i++)
+        for (int j = 0; j < k; j++)
         {
-            for (int j = 0; j < k; j++)
-            {
-                cin >> grid[i][j];
-            }
-        }
-
-        double (*heuristic)(const vector<vector<int>> &) = chooseHeuristic();
-        if (heuristic == nullptr)
-        {
-            cout << "Invalid heuristic function!!!\n";
-            return -1;
-        }
-
-        double weight;
-        cout << "\nEnter a weight: ";
-        cin >> weight;
-
-        unsigned long long int explored;
-        int cost = 0;
-        solveNPuzzle(grid, heuristic, explored, weight, cost);
-        // if (explored < THRESHOLD)
-        // {
-        //     cout << "\nTotal explored nodes: " << explored << '\n';
-        //     cout << "\nSolution cost: " << cost << '\n';
-        //     cout << "\nPerformance metric((Solution cost / exlored node) * 100%) = " << ((double)cost / double(explored)) * 100 << "%\n";
-        // }
-    }
-
-    // file IO
-    else if (fileInput == 2)
-    {
-        string input = "";
-        cout << "\nEnter your input file name:";
-        cin >> input;
-        freopen(input.c_str(), "r", stdin);
-
-        int k;
-        cin >> k;
-        vector<vector<int>> grid(k, vector<int>(k));
-        for (int i = 0; i < k; i++)
-        {
-            for (int j = 0; j < k; j++)
-            {
-                cin >> grid[i][j];
-            }
-        }
-
-        vector<string> output = {"hamming", "manhatton", "euclidean", "linearConflict", "custom"};
-        vector<double (*)(const vector<vector<int>> &)> heuristics = {Heuristics::hammingDistance, Heuristics::manhattanDistance, Heuristics::euclideanDistance, Heuristics::linearConflict, Heuristics::custom};
-
-        vector<double> weights = {1.0, 1.2, 2.0, 5.0};
-        unsigned long long int explored;
-        int cost = 0;
-        for (int i = 0; i < heuristics.size(); i++)
-        {
-            for (int j = 0; j < weights.size(); j++)
-            {
-                string outputfile = output[i] + to_string(weights[j]) + ".txt";
-                freopen(outputfile.c_str(), "w", stdout);
-                solveNPuzzle(grid, heuristics[i], explored, weights[j], cost);
-
-                // if (explored < THRESHOLD)
-                // {
-                //     cout << "\nTotal explored nodes: " << explored << '\n';
-                //     cout << "\nSolution cost: " << cost << '\n';
-                //     cout << "\nPerformance metric((Solution cost / exlored node) * 100%) = " << ((double)cost / double(explored)) * 100 << "%\n";
-                // }
-            }
+            cin >> grid[i][j];
         }
     }
 
-    else
+    Heuristics::setGoalPos(k);
+    for (int i = 0; i < k * k; i++)
     {
-        cout << "\nInvalid File format.\n";
+        cout << goalPos[i].first << ' ' << goalPos[i].second << '\n';
+    }
+    double (*heuristic)(const vector<vector<int>> &) = chooseHeuristic();
+    if (heuristic == nullptr)
+    {
+        cout << "Invalid heuristic function!!!\n";
         return -1;
+    }
+    unsigned long long int explored;
+    solveNPuzzle(grid, heuristic, explored,1);
+    if (explored)
+    {
+        cout << "\nTotal explored nodes: " << explored << '\n';
     }
     return 0;
 }
