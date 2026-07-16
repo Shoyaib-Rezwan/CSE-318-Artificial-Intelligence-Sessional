@@ -1,0 +1,3 @@
+Name,|V| or n,|E| or m,Simple Randomized or Randomized-1,Simple Greedy or Greedy-1,Semi-greedy-1,Simple local or local-1 (No. of iterations),Simple local or local-1 (Average value),GRASP-1 (No. of iterations),GRASP-1 (Best value)
+g48,3000,6000,2999.35,6000,6000,0,0,0,6000
+g49,3000,6000,3001.16,6000,6000,0,0,0,6000

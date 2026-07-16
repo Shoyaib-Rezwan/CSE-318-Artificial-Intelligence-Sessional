@@ -1,0 +1,705 @@
+------Alpha= 0.8	Max-Iteration= 100------
+
+
+Name: g1; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	9584.63
+Simple greedy max-cut weight:		11027
+Semi-greedy max-cut weight:			11266
+**Simple local search**
+	No. of iteration:				50
+	Average value:					11121
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5800
+	Best value:						11474
+
+
+Name: g2; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	9588.11
+Simple greedy max-cut weight:		11037
+Semi-greedy max-cut weight:			11352
+**Simple local search**
+	No. of iteration:				60
+	Average value:					11231
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5910
+	Best value:						11465
+
+
+Name: g3; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	9586.87
+Simple greedy max-cut weight:		11074
+Semi-greedy max-cut weight:			11229
+**Simple local search**
+	No. of iteration:				61
+	Average value:					11122.6
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				6043
+	Best value:						11469
+
+
+Name: g4; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	9589.67
+Simple greedy max-cut weight:		11058
+Semi-greedy max-cut weight:			11290
+**Simple local search**
+	No. of iteration:				85
+	Average value:					11263.7
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5995
+	Best value:						11500
+
+
+Name: g5; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	9591.62
+Simple greedy max-cut weight:		11040
+Semi-greedy max-cut weight:			11285
+**Simple local search**
+	No. of iteration:				36
+	Average value:					11032.5
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				6219
+	Best value:						11513
+
+
+Name: g6; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	80.5175
+Simple greedy max-cut weight:		1468
+Semi-greedy max-cut weight:			1739
+**Simple local search**
+	No. of iteration:				88
+	Average value:					1849.81
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7376
+	Best value:						2031
+
+
+Name: g7; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	-72.1863
+Simple greedy max-cut weight:		1397
+Semi-greedy max-cut weight:			1655
+**Simple local search**
+	No. of iteration:				67
+	Average value:					1738.85
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7375
+	Best value:						1842
+
+
+Name: g8; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	-89.7775
+Simple greedy max-cut weight:		1355
+Semi-greedy max-cut weight:			1590
+**Simple local search**
+	No. of iteration:				52
+	Average value:					1651.85
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7316
+	Best value:						1910
+
+
+Name: g9; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	-36.6063
+Simple greedy max-cut weight:		1406
+Semi-greedy max-cut weight:			1652
+**Simple local search**
+	No. of iteration:				70
+	Average value:					1733.16
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				6785
+	Best value:						1897
+
+
+Name: g10; |V| or n: 800; |E| or m: 19176
+
+Simple randomized max-cut weight:	-79.3875
+Simple greedy max-cut weight:		1342
+Semi-greedy max-cut weight:			1595
+**Simple local search**
+	No. of iteration:				62
+	Average value:					1649.69
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7336
+	Best value:						1857
+
+
+Name: g11; |V| or n: 800; |E| or m: 1600
+
+Simple randomized max-cut weight:	16.7475
+Simple greedy max-cut weight:		430
+Semi-greedy max-cut weight:			484
+**Simple local search**
+	No. of iteration:				6
+	Average value:					408.333
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				563
+	Best value:						512
+
+
+Name: g12; |V| or n: 800; |E| or m: 1600
+
+Simple randomized max-cut weight:	-1.82
+Simple greedy max-cut weight:		416
+Semi-greedy max-cut weight:			474
+**Simple local search**
+	No. of iteration:				3
+	Average value:					318
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				548
+	Best value:						500
+
+
+Name: g13; |V| or n: 800; |E| or m: 1600
+
+Simple randomized max-cut weight:	17.6525
+Simple greedy max-cut weight:		432
+Semi-greedy max-cut weight:			488
+**Simple local search**
+	No. of iteration:				5
+	Average value:					394.4
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				545
+	Best value:						526
+
+
+Name: g14; |V| or n: 800; |E| or m: 4694
+
+Simple randomized max-cut weight:	2346.88
+Simple greedy max-cut weight:		2900
+Semi-greedy max-cut weight:			2951
+**Simple local search**
+	No. of iteration:				16
+	Average value:					2778.12
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2078
+	Best value:						2997
+
+
+Name: g15; |V| or n: 800; |E| or m: 4661
+
+Simple randomized max-cut weight:	2330.39
+Simple greedy max-cut weight:		2870
+Semi-greedy max-cut weight:			2913
+**Simple local search**
+	No. of iteration:				15
+	Average value:					2730.27
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2152
+	Best value:						2978
+
+
+Name: g16; |V| or n: 800; |E| or m: 4672
+
+Simple randomized max-cut weight:	2335.81
+Simple greedy max-cut weight:		2887
+Semi-greedy max-cut weight:			2919
+**Simple local search**
+	No. of iteration:				30
+	Average value:					2842.27
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2209
+	Best value:						2980
+
+
+Name: g17; |V| or n: 800; |E| or m: 4667
+
+Simple randomized max-cut weight:	2331.22
+Simple greedy max-cut weight:		2883
+Semi-greedy max-cut weight:			2930
+**Simple local search**
+	No. of iteration:				22
+	Average value:					2811.09
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2392
+	Best value:						2979
+
+
+Name: g18; |V| or n: 800; |E| or m: 4694
+
+Simple randomized max-cut weight:	32.3987
+Simple greedy max-cut weight:		761
+Semi-greedy max-cut weight:			851
+**Simple local search**
+	No. of iteration:				32
+	Average value:					855.469
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				3382
+	Best value:						925
+
+
+Name: g19; |V| or n: 800; |E| or m: 4661
+
+Simple randomized max-cut weight:	-54.4625
+Simple greedy max-cut weight:		710
+Semi-greedy max-cut weight:			728
+**Simple local search**
+	No. of iteration:				52
+	Average value:					757.981
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				3405
+	Best value:						845
+
+
+Name: g20; |V| or n: 800; |E| or m: 4672
+
+Simple randomized max-cut weight:	-20.9675
+Simple greedy max-cut weight:		732
+Semi-greedy max-cut weight:			754
+**Simple local search**
+	No. of iteration:				39
+	Average value:					774.795
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				3328
+	Best value:						881
+
+
+Name: g21; |V| or n: 800; |E| or m: 4667
+
+Simple randomized max-cut weight:	-34.1175
+Simple greedy max-cut weight:		700
+Semi-greedy max-cut weight:			788
+**Simple local search**
+	No. of iteration:				27
+	Average value:					778.815
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				3400
+	Best value:						848
+
+
+Name: g22; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	9996.3
+Simple greedy max-cut weight:		12359
+Semi-greedy max-cut weight:			12802
+**Simple local search**
+	No. of iteration:				68
+	Average value:					12694.5
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				9437
+	Best value:						13042
+
+
+Name: g23; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	9996.31
+Simple greedy max-cut weight:		12257
+Semi-greedy max-cut weight:			12726
+**Simple local search**
+	No. of iteration:				91
+	Average value:					12700.5
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				9339
+	Best value:						13058
+
+
+Name: g24; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	9997.01
+Simple greedy max-cut weight:		12377
+Semi-greedy max-cut weight:			12756
+**Simple local search**
+	No. of iteration:				107
+	Average value:					12756.8
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				9616
+	Best value:						13049
+
+
+Name: g25; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	9993.44
+Simple greedy max-cut weight:		12383
+Semi-greedy max-cut weight:			12792
+**Simple local search**
+	No. of iteration:				93
+	Average value:					12754.8
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				9184
+	Best value:						13025
+
+
+Name: g26; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	9994.4
+Simple greedy max-cut weight:		12327
+Semi-greedy max-cut weight:			12801
+**Simple local search**
+	No. of iteration:				80
+	Average value:					12740
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				9472
+	Best value:						13055
+
+
+Name: g27; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	-20.0845
+Simple greedy max-cut weight:		2324
+Semi-greedy max-cut weight:			2672
+**Simple local search**
+	No. of iteration:				126
+	Average value:					2801.49
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				12250
+	Best value:						2995
+
+
+Name: g28; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	-50.6135
+Simple greedy max-cut weight:		2293
+Semi-greedy max-cut weight:			2650
+**Simple local search**
+	No. of iteration:				121
+	Average value:					2760.19
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				12246
+	Best value:						2982
+
+
+Name: g29; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	39.8335
+Simple greedy max-cut weight:		2372
+Semi-greedy max-cut weight:			2756
+**Simple local search**
+	No. of iteration:				130
+	Average value:					2878.37
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				12576
+	Best value:						3053
+
+
+Name: g30; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	51.472
+Simple greedy max-cut weight:		2419
+Semi-greedy max-cut weight:			2722
+**Simple local search**
+	No. of iteration:				136
+	Average value:					2857.99
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				12359
+	Best value:						3094
+
+
+Name: g31; |V| or n: 2000; |E| or m: 19990
+
+Simple randomized max-cut weight:	-38.691
+Simple greedy max-cut weight:		2332
+Semi-greedy max-cut weight:			2609
+**Simple local search**
+	No. of iteration:				116
+	Average value:					2721.17
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				12251
+	Best value:						3001
+
+
+Name: g32; |V| or n: 2000; |E| or m: 4000
+
+Simple randomized max-cut weight:	10.897
+Simple greedy max-cut weight:		1024
+Semi-greedy max-cut weight:			1162
+**Simple local search**
+	No. of iteration:				18
+	Average value:					1114.44
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				1198
+	Best value:						1252
+
+
+Name: g33; |V| or n: 2000; |E| or m: 4000
+
+Simple randomized max-cut weight:	-15.302
+Simple greedy max-cut weight:		1002
+Semi-greedy max-cut weight:			1186
+**Simple local search**
+	No. of iteration:				9
+	Average value:					1062.22
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				1183
+	Best value:						1238
+
+
+Name: g34; |V| or n: 2000; |E| or m: 4000
+
+Simple randomized max-cut weight:	-24.841
+Simple greedy max-cut weight:		980
+Semi-greedy max-cut weight:			1196
+**Simple local search**
+	No. of iteration:				12
+	Average value:					1107.33
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				1205
+	Best value:						1242
+
+
+Name: g35; |V| or n: 2000; |E| or m: 11778
+
+Simple randomized max-cut weight:	5888.31
+Simple greedy max-cut weight:		7239
+Semi-greedy max-cut weight:			7378
+**Simple local search**
+	No. of iteration:				39
+	Average value:					7218.64
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5231
+	Best value:						7486
+
+
+Name: g36; |V| or n: 2000; |E| or m: 11766
+
+Simple randomized max-cut weight:	5883.64
+Simple greedy max-cut weight:		7243
+Semi-greedy max-cut weight:			7355
+**Simple local search**
+	No. of iteration:				57
+	Average value:					7274.46
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5134
+	Best value:						7480
+
+
+Name: g37; |V| or n: 2000; |E| or m: 11785
+
+Simple randomized max-cut weight:	5892.69
+Simple greedy max-cut weight:		7268
+Semi-greedy max-cut weight:			7379
+**Simple local search**
+	No. of iteration:				54
+	Average value:					7288.96
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5085
+	Best value:						7482
+
+
+Name: g38; |V| or n: 2000; |E| or m: 11779
+
+Simple randomized max-cut weight:	5888.98
+Simple greedy max-cut weight:		7260
+Semi-greedy max-cut weight:			7360
+**Simple local search**
+	No. of iteration:				55
+	Average value:					7268.31
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				5227
+	Best value:						7492
+
+
+Name: g39; |V| or n: 2000; |E| or m: 11778
+
+Simple randomized max-cut weight:	13.3785
+Simple greedy max-cut weight:		1828
+Semi-greedy max-cut weight:			1926
+**Simple local search**
+	No. of iteration:				121
+	Average value:					2031.9
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				8807
+	Best value:						2188
+
+
+Name: g40; |V| or n: 2000; |E| or m: 11766
+
+Simple randomized max-cut weight:	-50.791
+Simple greedy max-cut weight:		1801
+Semi-greedy max-cut weight:			1996
+**Simple local search**
+	No. of iteration:				99
+	Average value:					2060.66
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				8008
+	Best value:						2172
+
+
+Name: g41; |V| or n: 2000; |E| or m: 11785
+
+Simple randomized max-cut weight:	-9.1145
+Simple greedy max-cut weight:		1875
+Semi-greedy max-cut weight:			1972
+**Simple local search**
+	No. of iteration:				66
+	Average value:					2000.8
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7648
+	Best value:						2192
+
+
+Name: g42; |V| or n: 2000; |E| or m: 11779
+
+Simple randomized max-cut weight:	61.1935
+Simple greedy max-cut weight:		1945
+Semi-greedy max-cut weight:			2028
+**Simple local search**
+	No. of iteration:				93
+	Average value:					2094.28
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				7907
+	Best value:						2260
+
+
+Name: g43; |V| or n: 1000; |E| or m: 9990
+
+Simple randomized max-cut weight:	4994.85
+Simple greedy max-cut weight:		6187
+Semi-greedy max-cut weight:			6374
+**Simple local search**
+	No. of iteration:				42
+	Average value:					6261.43
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				4910
+	Best value:						6519
+
+
+Name: g44; |V| or n: 1000; |E| or m: 9990
+
+Simple randomized max-cut weight:	4996.99
+Simple greedy max-cut weight:		6148
+Semi-greedy max-cut weight:			6346
+**Simple local search**
+	No. of iteration:				41
+	Average value:					6236.66
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				4766
+	Best value:						6533
+
+
+Name: g45; |V| or n: 1000; |E| or m: 9990
+
+Simple randomized max-cut weight:	4994.48
+Simple greedy max-cut weight:		6143
+Semi-greedy max-cut weight:			6369
+**Simple local search**
+	No. of iteration:				35
+	Average value:					6222.46
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				4877
+	Best value:						6539
+
+
+Name: g46; |V| or n: 1000; |E| or m: 9990
+
+Simple randomized max-cut weight:	4992.52
+Simple greedy max-cut weight:		6216
+Semi-greedy max-cut weight:			6395
+**Simple local search**
+	No. of iteration:				47
+	Average value:					6316.49
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				4686
+	Best value:						6507
+
+
+Name: g47; |V| or n: 1000; |E| or m: 9990
+
+Simple randomized max-cut weight:	4993.7
+Simple greedy max-cut weight:		6193
+Semi-greedy max-cut weight:			6349
+**Simple local search**
+	No. of iteration:				50
+	Average value:					6273.1
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				4672
+	Best value:						6548
+
+
+Name: g48; |V| or n: 3000; |E| or m: 6000
+
+Simple randomized max-cut weight:	2999.43
+Simple greedy max-cut weight:		5886
+Semi-greedy max-cut weight:			6000
+**Simple local search**
+	No. of iteration:				1
+	Average value:					0
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				100
+	Best value:						6000
+
+
+Name: g49; |V| or n: 3000; |E| or m: 6000
+
+Simple randomized max-cut weight:	2999.92
+Simple greedy max-cut weight:		5926
+Semi-greedy max-cut weight:			6000
+**Simple local search**
+	No. of iteration:				1
+	Average value:					0
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				100
+	Best value:						6000
+
+
+Name: g50; |V| or n: 3000; |E| or m: 6000
+
+Simple randomized max-cut weight:	2998.74
+Simple greedy max-cut weight:		5856
+Semi-greedy max-cut weight:			5880
+**Simple local search**
+	No. of iteration:				1
+	Average value:					0
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				100
+	Best value:						5880
+
+
+Name: g51; |V| or n: 1000; |E| or m: 5909
+
+Simple randomized max-cut weight:	2956.34
+Simple greedy max-cut weight:		3652
+Semi-greedy max-cut weight:			3695
+**Simple local search**
+	No. of iteration:				33
+	Average value:					3605
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2688
+	Best value:						3753
+
+
+Name: g52; |V| or n: 1000; |E| or m: 5916
+
+Simple randomized max-cut weight:	2959.42
+Simple greedy max-cut weight:		3635
+Semi-greedy max-cut weight:			3699
+**Simple local search**
+	No. of iteration:				29
+	Average value:					3590.97
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2765
+	Best value:						3763
+
+
+Name: g53; |V| or n: 1000; |E| or m: 5914
+
+Simple randomized max-cut weight:	2957.43
+Simple greedy max-cut weight:		3661
+Semi-greedy max-cut weight:			3702
+**Simple local search**
+	No. of iteration:				23
+	Average value:					3557.91
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2698
+	Best value:						3766
+
+
+Name: g54; |V| or n: 1000; |E| or m: 5916
+
+Simple randomized max-cut weight:	2958.25
+Simple greedy max-cut weight:		3619
+Semi-greedy max-cut weight:			3693
+**Simple local search**
+	No. of iteration:				35
+	Average value:					3608.6
+**GRASP(Greedy Randomized Adaptive Search Procedure)**
+	No. of iteration:				2729
+	Best value:						3755
+
+
